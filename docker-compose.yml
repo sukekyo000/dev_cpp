@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  CppDev_NAME: #ここは環境変数が使えないので、.envのCppDev_NAMEと同じものを決め打ち
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ${CppDev_NAME}
+    container_name: ${CppDev_NAME}
+    volumes:
+      - type: bind
+        source: .
+        target: /mnt/${CppDev_NAME}
+    stdin_open: true
+    tty: true
+    working_dir: /mnt/${CppDev_NAME}/src
